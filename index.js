@@ -30,9 +30,16 @@ async function run() {
 
     // Get All Products Data------------------------>
     app.get("/productsData", async (req, res) => {
+      const page = parseInt(req.query.page);
+      const size = parseInt(req.query.size);
+      const count = await productsCollections.find().count();
       const body = req.body;
-      const result = await productsCollections.find(body).toArray();
-      res.send(result);
+      const result = await productsCollections
+        .find(body)
+        .skip(page * size)
+        .limit(size)
+        .toArray();
+      res.send({result, count});
     });
 
     await client.db("admin").command({ ping: 1 });
