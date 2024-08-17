@@ -39,7 +39,7 @@ async function run() {
         .skip(page * size)
         .limit(size)
         .toArray();
-      res.send({result, count});
+      res.send({ result, count });
     });
 
     await client.db("admin").command({ ping: 1 });
