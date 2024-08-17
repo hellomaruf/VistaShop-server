@@ -32,6 +32,8 @@ async function run() {
     app.get("/productsData", async (req, res) => {
       const page = parseInt(req.query.page);
       const size = parseInt(req.query.size);
+      console.log(page, size);
+      
       const count = await productsCollections.find().count();
       const body = req.body;
       const result = await productsCollections
