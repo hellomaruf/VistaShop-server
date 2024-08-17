@@ -42,6 +42,24 @@ async function run() {
       res.send({ result, count });
     });
 
+    // Sorting by newest and oldest data----------------------------->
+    // app.get("/products", async (req, res) => {
+    //   const { sort } = req.query;
+    //   console.log(sort);
+
+    //   let sortOption;
+    //   if (sort === "newest") {
+    //     sortOption = { createdAt: -1 };
+    //   } else if (sort === "oldest") {
+    //     sortOption = { createdAt: 1 };
+    //   } else {
+    //     sortOption = {};
+    //   }
+
+    //   const result = await productsCollections.find().sort(sortOption);
+    //   res.send(result);
+    // });
+
     await client.db("admin").command({ ping: 1 });
     console.log(
       "Pinged your deployment. You successfully connected to MongoDB!"
